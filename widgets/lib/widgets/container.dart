@@ -5,24 +5,37 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: const TextStyle(),
-      child: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          alignment: Alignment.bottomRight,
-          padding: const EdgeInsets.all(15),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(20)
-            )
-          ),
-          child: const Text(
-            'Christian', 
-            style: TextStyle(
-              color: Colors.black
+    return Container(
+      color: Colors.white,
+      child: DefaultTextStyle(
+        style: const TextStyle(),
+        child: Center(
+          child: Container(
+            width: 200,
+            height: 200,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                    colors: [Colors.yellow, Colors.blue, Colors.red],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.5, 0.75, 1]),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.blue.withOpacity(.4),
+                      blurRadius: 10,
+                      offset: const Offset(-10, 10)),
+                  // BoxShadow(
+                  //   color: Colors.red.withOpacity(.5),
+                  //   blurRadius: 10
+                  // ),
+                ],
+                color: Colors.white,
+                borderRadius: const BorderRadius.all(Radius.circular(20))),
+            child: const Text(
+              'Christian',
+              style: TextStyle(color: Colors.black),
             ),
           ),
         ),
