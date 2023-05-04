@@ -19,11 +19,11 @@ class MyColumn extends StatelessWidget {
               children: [
                 const Text('Hello'),
                 const Text(
-                  'World', 
+                  'World',
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 25,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 20),

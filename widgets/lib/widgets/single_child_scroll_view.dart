@@ -21,7 +21,7 @@ class SingleChildScrollViewPage extends StatelessWidget {
         bottom: false,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),

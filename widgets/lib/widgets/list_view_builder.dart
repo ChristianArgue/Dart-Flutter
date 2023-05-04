@@ -10,6 +10,7 @@ class ListViewBuilderPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: 1000,
         itemBuilder: (BuildContext context, int index) {
+          // ignore: avoid_print
           print('Renderizado');
           return Container(
             height: 100,
