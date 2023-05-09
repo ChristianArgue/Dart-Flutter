@@ -5,22 +5,26 @@ class Avatar extends StatelessWidget {
     super.key,
     required this.size,
     required this.asset,
+    this.borderWidth = 0,
   });
 
   final double size;
   final String asset;
+  final double borderWidth;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(
-          size * 0.5,
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(asset),
         ),
-        child: Image.asset(
-          asset,
-          width: size,
-          height: size,
+        border: Border.all(
+          width: borderWidth,
+          color: Colors.white,
         ),
       ),
     );
