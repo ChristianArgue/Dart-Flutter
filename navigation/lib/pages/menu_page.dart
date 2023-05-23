@@ -1,44 +1,71 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 import '../routes.dart';
-import 'login_page.dart';
 
-class MenuPage extends StatelessWidget {
+class PageData {
+  final String name;
+  final String label;
+  final Object? argmunets;
+
+  const PageData({
+    required this.name,
+    required this.label,
+    this.argmunets,
+  });
+}
+
+class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
 
-  void _onTap(BuildContext context) {
-    final faker = Faker();
-    final email = faker.internet.email();
-    final route = MaterialPageRoute(
-        settings: const RouteSettings(name: '/login'),
-        builder: (_) => LoginPage(email: email));
-    Navigator.push(context, route);
-    // Navigator.pushReplacement(context, route);
-  }
+  @override
+  State<MenuPage> createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
+  Color _color = Colors.red;
+
+  final _pages = const <PageData>[
+    PageData(
+      name: Routes.login,
+      label: 'Go to Login',
+      argmunets: 'test@test.com',
+    ),
+    PageData(
+      name: Routes.counter,
+      label: 'Go to Counter',
+    ),
+    PageData(
+      name: Routes.pickColor,
+      label: 'Go to PickColor',
+    ),
+    PageData(
+      name: Routes.dialogs,
+      label: 'Go to Dialogs',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: ListView(
-        children: [
-          ListTile(
-            onTap: () => _onTap(context),
-            title: const Text('Go to Login'),
-            trailing: const Icon(Icons.arrow_right_alt_outlined),
-          ),
-          ListTile(
+      appBar: AppBar(
+        backgroundColor: _color,
+      ),
+      body: ListView.builder(
+        itemBuilder: (_, index) {
+          final data = _pages[index];
+          return ListTile(
+            trailing: const Icon(Icons.keyboard_double_arrow_right_rounded),
+            title: Text(data.label),
             onTap: () {
               Navigator.pushNamed(
                 context,
-                Routes.counter,
+                data.name,
+                arguments: data.argmunets,
               );
             },
-            title: const Text('Go to Counter'),
-            trailing: const Icon(Icons.arrow_right_alt_outlined),
-          ),
-        ],
+          );
+        },
+        itemCount: _pages.length,
       ),
     );
   }

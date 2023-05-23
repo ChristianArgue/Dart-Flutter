@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
           onPressed: () {
             Navigator.popUntil(context, (route) {
               final name = route.settings.name;
-              if (name == '/') {
+              if (name == 'home') {
                 return true;
               } else {
                 return false;
