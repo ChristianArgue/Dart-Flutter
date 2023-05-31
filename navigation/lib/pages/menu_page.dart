@@ -22,7 +22,7 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  Color _color = Colors.red;
+  final Color _color = Colors.red;
 
   final _pages = const <PageData>[
     PageData(
