@@ -22,38 +22,41 @@ class _DialogContent extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      // alignment: Alignment.bottomCenter,
-      // backgroundColor: Colors.black12,
-      // elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      actionsAlignment: MainAxisAlignment.center,
-      title: Text(
-        title,
-        textAlign: TextAlign.center,
-      ),
-      actions: [
-        MaterialButton(
-          onPressed: () {
-            Navigator.pop(context, true);
-          },
-          child: const Text(
-            'Yes',
-            style: TextStyle(color: Colors.green),
-          ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: AlertDialog(
+        // alignment: Alignment.bottomCenter,
+        // backgroundColor: Colors.black12,
+        // elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
         ),
-        MaterialButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            'No',
-            style: TextStyle(color: Colors.red),
-          ),
+        actionsAlignment: MainAxisAlignment.center,
+        title: Text(
+          title,
+          textAlign: TextAlign.center,
         ),
-      ],
+        actions: [
+          MaterialButton(
+            onPressed: () {
+              Navigator.pop(context, true);
+            },
+            child: const Text(
+              'Yes',
+              style: TextStyle(color: Colors.green),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              'No',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
